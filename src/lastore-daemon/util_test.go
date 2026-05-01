@@ -78,8 +78,8 @@ func (*testWrap) TestTransition(c *C.C) {
 }
 
 func (*testWrap) TestGetEnhancedLocalePackages(c *C.C) {
-	if !system.QueryPackageInstalled("deepin-desktop-base") {
-		c.Skip("deepin-desktop-base not installed")
+	if !system.QueryPackageInstalled("lingmo-desktop-base") {
+		c.Skip("lingmo-desktop-base not installed")
 		return
 	}
 	lang := "zh_CN.UTF-8"
