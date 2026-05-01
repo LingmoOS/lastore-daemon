@@ -1,3 +1,9 @@
+lastore-daemon (6.2.52.lingmo.1) unstable; urgency=medium
+
+  * new release for Lingmo OS.
+
+ -- Lingmo OS Team <team@lingmo.org>  Fri, 01 May 2026 21:14:00 +0800
+
 lastore-daemon (6.2.51) unstable; urgency=medium
 
   * feat: lastore更新支持p2p协议的流量优化
