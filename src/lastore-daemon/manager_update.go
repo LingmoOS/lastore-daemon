@@ -16,7 +16,6 @@ import (
 	"path/filepath"
 	"slices"
 	"strings"
-	"sync"
 	"time"
 
 	"github.com/godbus/dbus/v5"
@@ -467,7 +466,7 @@ func (m *Manager) generateUpdateInfo() (errList []error) {
 	mainSource := system.OriginSourceFile // /etc/apt/sources.list
 	securitySource := system.SecuritySourceFile // /etc/apt/sources.list.d/security.list
 
-	updateType, allPackages, removePackages, err := apt.ClassifyUpdatePackages(mainSource, securitySource)
+	updateType, allPackages, _, err := apt.ClassifyUpdatePackages(mainSource, securitySource)
 	if err != nil {
 		return []error{fmt.Errorf("failed to classify update packages: %v", err)}
 	}
