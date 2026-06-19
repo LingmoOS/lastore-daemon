@@ -654,6 +654,89 @@ func parseBackupJobError(stdErrStr string, stdOutStr string) *system.JobError {
 	}
 }
 
+// ClassifyUpdatePackages 基于更新包内容分类更新类型
+// 逻辑：
+// 1. 从指定源（OBS + Debian官方源）获取可更新包列表
+// 2. 检查是否包含 base-files 包：
+//    - 有 base-files → 系统更新 (SystemUpdate)
+//    - 无 base-files → 常规更新（不属于系统更新）
+// 3. 判断安全源是否在主源中已配置，如有则直接标记，否则单独检查安全源文件
+func ClassifyUpdatePackages(sourcePath string, securitySourcePath string) (system.UpdateType, map[string]system.PackageInfo, map[string]system.PackageInfo, error) {
+	// 从主源（OBS + Debian官方）获取可更新包
+	allPackages, removePackages, err := GenOnlineUpdatePackagesByEmulateInstall(nil, []string{
+		"-o", fmt.Sprintf("Dir::Etc::sourcelist=%v", sourcePath),
+		"-o", "Dir::Etc::SourceParts=/dev/null",
+	})
+	if err != nil {
+		return 0, nil, nil, fmt.Errorf("failed to get packages from main source: %v", err)
+	}
+
+	var updateType system.UpdateType
+
+	// 检查是否有 base-files 包来判断是否为系统更新
+	if _, hasBaseFiles := allPackages["base-files"]; hasBaseFiles {
+		updateType |= system.SystemUpdate
+		logger.Info("base-packages found in update list, classified as system update")
+	} else {
+		logger.Info("base-packages not found in update list, classified as regular update")
+	}
+
+	// 检查安全源：先判断主源中是否已包含安全源配置
+	hasSecurityInMainSource := isSecuritySourceConfigured(sourcePath)
+	if hasSecurityInMainSource {
+		// 主源已包含安全源，如果有任何包更新就标记为包含安全更新
+		// （因为无法区分哪些包来自安全源，保守处理：有包更新就标记）
+		if len(allPackages) > 0 && (updateType&system.SystemUpdate == 0 || len(allPackages) > 1) {
+			updateType |= system.SecurityUpdate
+			logger.Info("security source already configured in main source, marking security update")
+		}
+	} else if securitySourcePath != "" {
+		// 主源未包含安全源，需要单独检查安全源文件
+		securityPackages, _, err := GenOnlineUpdatePackagesByEmulateInstall(nil, []string{
+			"-o", fmt.Sprintf("Dir::Etc::sourcelist=%v", securitySourcePath),
+			"-o", "Dir::Etc::SourceParts=/dev/null",
+		})
+		if err != nil {
+			logger.Warningf("failed to check security source: %v", err)
+		} else if len(securityPackages) > 0 {
+			updateType |= system.SecurityUpdate
+			logger.Info("security updates available from separate security source")
+			// 将安全更新的包合并到主列表中
+			for pkgName, pkgInfo := range securityPackages {
+				if _, exists := allPackages[pkgName]; !exists {
+					allPackages[pkgName] = pkgInfo
+				}
+			}
+		}
+	}
+
+	return updateType, allPackages, removePackages, nil
+}
+
+// isSecuritySourceConfigured 检查指定的 sources 文件中是否包含 Debian 安全源配置
+func isSecuritySourceConfigured(sourcePath string) bool {
+	content, err := os.ReadFile(sourcePath)
+	if err != nil {
+		logger.Warningf("failed to read source file %s: %v", sourcePath, err)
+		return false
+	}
+
+	// 检查常见的 Debian 安全源 URL 模式
+	sourceStr := string(content)
+	securityPatterns := []string{
+		"debian-security",
+		"security.debian.org",
+		"/debian-security",
+	}
+
+	for _, pattern := range securityPatterns {
+		if strings.Contains(sourceStr, pattern) {
+			return true
+		}
+	}
+	return false
+}
+
 func (p *APTSystem) OsBackup(jobId string) error {
 	c := newAPTCommand(p, jobId, system.BackupJobType, p.Indicator, nil)
 	c.ParseJobError = parseBackupJobError

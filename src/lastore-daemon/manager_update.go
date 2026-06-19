@@ -367,63 +367,66 @@ func (m *Manager) updateSource(sender dbus.Sender) (*Job, error) {
 				}
 				_ = os.Setenv("http_proxy", environ["http_proxy"])
 				_ = os.Setenv("https_proxy", environ["https_proxy"])
-				// 检查任务开始后,从更新平台获取仓库、更新注记等信息
-				// 从更新平台获取数据:系统更新和安全更新流程都包含
-				err = m.updatePlatform.GenUpdatePolicyByToken(true)
-				if err != nil {
-					if m.config.PlatformUpdate {
-						job.retry = 0
-						return &system.JobError{
-							ErrType:   system.ErrorPlatformUnreachable,
-							ErrDetail: "failed to get update policy by token" + err.Error(),
-						}
-					} else {
-						logger.Warningf("updatePlatform gen token failed: %v", err)
-						return nil
-					}
-				}
-				if m.updatePlatform.TimerHasChanged {
-					msg := gettext.Tr("timer has changed. Please reboot to take effect")
-					go m.sendNotify(updateNotifyShowOptional, 0, "preferences-system", "", msg, nil, nil, system.NotifyExpireTimeoutPrivate)
-				}
 
-				err = m.updatePlatform.UpdateAllPlatformDataSync()
-				if err != nil {
-					logger.Warning(err)
-					if m.config.PlatformUpdate {
-						job.retry = 0
-						return &system.JobError{
-							ErrType:   system.ErrorPlatformUnreachable,
-							ErrDetail: "failed to get update info by update platform" + err.Error(),
-						}
-					} else {
-						return nil
-					}
-				}
-				m.updatePlatform.PrepareCheckScripts()
-				m.updater.setPropUpdateTarget(m.updatePlatform.GetUpdateTarget()) // 更新目标 历史版本控制中心获取UpdateTarget,获取更新日志
+				// 注释掉从远程更新平台获取数据的逻辑，改用本地 OBS + Debian 官方源
+				// // 检查任务开始后,从更新平台获取仓库、更新注记等信息
+				// // 从更新平台获取数据:系统更新和安全更新流程都包含
+				// err = m.updatePlatform.GenUpdatePolicyByToken(true)
+				// if err != nil {
+				// 	if m.config.PlatformUpdate {
+				// 		job.retry = 0
+				// 		return &system.JobError{
+				// 			ErrType:   system.ErrorPlatformUnreachable,
+				// 			ErrDetail: "failed to get update policy by token" + err.Error(),
+				// 		}
+				// 	} else {
+				// 		logger.Warningf("updatePlatform gen token failed: %v", err)
+				// 		return nil
+				// 	}
+				// }
+				// if m.updatePlatform.TimerHasChanged {
+				// 	msg := gettext.Tr("timer has changed. Please reboot to take effect")
+				// 	go m.sendNotify(updateNotifyShowOptional, 0, "preferences-system", "", msg, nil, nil, system.NotifyExpireTimeoutPrivate)
+				// }
+
+				// err = m.updatePlatform.UpdateAllPlatformDataSync()
+				// if err != nil {
+				// 	logger.Warning(err)
+				// 	if m.config.PlatformUpdate {
+				// 		job.retry = 0
+				// 		return &system.JobError{
+				// 			ErrType:   system.ErrorPlatformUnreachable,
+				// 			ErrDetail: "failed to get update info by update platform" + err.Error(),
+				// 		}
+				// 	} else {
+				// 		return nil
+				// 	}
+				// }
+				// m.updatePlatform.PrepareCheckScripts()
+				// m.updater.setPropUpdateTarget(m.updatePlatform.GetUpdateTarget()) // 更新目标 历史版本控制中心获取UpdateTarget,获取更新日志
 
 				checkType := dut.PreUpdateCheck
 				if systemErr := dut.CheckSystem(checkType, nil); systemErr != nil {
 					logger.Warning(systemErr)
-					go func(err *system.JobError) {
-						m.updatePlatform.PostProcessEventMessage(updateplatform.ProcessEvent{
-							TaskID:       1,
-							EventType:    updateplatform.PreUpdateCheck,
-							EventStatus:  false,
-							EventContent: "PreUpdateCheck failed",
-						})
-					}(systemErr)
+					// 注释掉平台事件上报
+					// go func(err *system.JobError) {
+					// 	m.updatePlatform.PostProcessEventMessage(updateplatform.ProcessEvent{
+					// 		TaskID:       1,
+					// 		EventType:    updateplatform.PreUpdateCheck,
+					// 		EventStatus:  false,
+					// 		EventContent: "PreUpdateCheck failed",
+					// 	})
+					// }(systemErr)
 				} else {
-					go m.updatePlatform.PostProcessEventMessage(updateplatform.ProcessEvent{
-						TaskID:       1,
-						EventType:    updateplatform.PreUpdateCheck,
-						EventStatus:  true,
-						EventContent: fmt.Sprintf("%v success", checkType),
-					})
+					// go m.updatePlatform.PostProcessEventMessage(updateplatform.ProcessEvent{
+					// 	TaskID:       1,
+					// 	EventType:    updateplatform.PreUpdateCheck,
+					// 	EventStatus:  true,
+					// 	EventContent: fmt.Sprintf("%v success", checkType),
+					// })
 				}
 
-				// 从更新平台获取数据并处理完成后,进度更新到10%
+				// 本地源检查完成,进度更新到10%
 				job.setPropProgress(0.10)
 				return nil
 			},
@@ -452,39 +455,61 @@ var getUpgradablePackageListMap = map[system.UpdateType]func([]string) (map[stri
 	system.UnknownUpdate:  getUnknownUpgradablePackagesMap,
 }
 
-// 生成系统更新内容和安全更新内容
+// 生成更新内容，基于 base-files 分类逻辑：
+// - 有 base-files → 系统更新 (SystemUpdate)
+// - 无 base-files → 常规更新
+// - Debian 安全源有更新 → 追加安全更新 (SecurityUpdate)
 func (m *Manager) generateUpdateInfo() (errList []error) {
 	propPkgMap := make(map[string][]string) // updater的ClassifiedUpdatablePackages用
-	var propPkgMapMu sync.Mutex
-	var errListMu sync.Mutex
-	appendErrorSafe := func(err error) {
-		errListMu.Lock()
-		errList = append(errList, err)
-		errListMu.Unlock()
-	}
-	updatePropPkgMapSafe := func(t string, packageList []string) {
-		propPkgMapMu.Lock()
-		propPkgMap[t] = packageList
-		propPkgMapMu.Unlock()
+
+	// 使用新的分类函数，从 OBS + Debian 官方源获取更新包
+	// 主源使用系统默认的 sources.list（包含 OBS 和 Debian 官方源）
+	mainSource := system.OriginSourceFile // /etc/apt/sources.list
+	securitySource := system.SecuritySourceFile // /etc/apt/sources.list.d/security.list
+
+	updateType, allPackages, removePackages, err := apt.ClassifyUpdatePackages(mainSource, securitySource)
+	if err != nil {
+		return []error{fmt.Errorf("failed to classify update packages: %v", err)}
 	}
 
-	var wg sync.WaitGroup
-	for updateType, getFn := range getUpgradablePackageList {
-		wg.Add(1)
-		fn := getFn
-		t := updateType
-		go func() {
-			logger.Infof("start get %v upgradable package", t.JobType())
-			installList, err := fn(m.coreList)
-			if err != nil {
-				appendErrorSafe(err)
-			} else {
-				updatePropPkgMapSafe(t.JobType(), installList)
-			}
-			wg.Done()
-		}()
+	logger.Infof("classified update type: %v, package count: %d", updateType, len(allPackages))
+
+	// 根据分类结果填充 propPkgMap
+	if updateType&system.SystemUpdate != 0 {
+		var pkgList []string
+		for pkgName := range allPackages {
+			pkgList = append(pkgList, pkgName)
+		}
+		propPkgMap[system.SystemUpdate.JobType()] = pkgList
+		logger.Info("system update packages:", len(pkgList))
 	}
-	wg.Wait()
+
+	if updateType&system.SecurityUpdate != 0 {
+		// 安全更新的包已经合并到 allPackages 中，这里单独标记
+		// 可以从安全源再次获取以区分哪些是安全更新包
+		securityPkgList, _, _ := apt.GenOnlineUpdatePackagesByEmulateInstall(nil, []string{
+			"-o", fmt.Sprintf("Dir::Etc::sourcelist=%v", securitySource),
+			"-o", "Dir::Etc::SourceParts=/dev/null",
+		})
+		var pkgList []string
+		for pkgName := range securityPkgList {
+			pkgList = append(pkgList, pkgName)
+		}
+		propPkgMap[system.SecurityUpdate.JobType()] = pkgList
+		logger.Info("security update packages:", len(pkgList))
+	}
+
+	// 如果既不是系统更新也不是安全更新，则为常规更新
+	if updateType&system.SystemUpdate == 0 && updateType&system.SecurityUpdate == 0 {
+		var pkgList []string
+		for pkgName := range allPackages {
+			pkgList = append(pkgList, pkgName)
+		}
+		// 常规更新可以归入 UnknownUpdate 类型显示
+		propPkgMap[system.UnknownUpdate.JobType()] = pkgList
+		logger.Info("regular update packages:", len(pkgList))
+	}
+
 	m.updater.setClassifiedUpdatablePackages(propPkgMap)
 	return
 }
