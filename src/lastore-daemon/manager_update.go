@@ -682,21 +682,22 @@ func (m *Manager) refreshUpdateInfos(sync bool) {
 		m.coreList = m.getCoreList(true)
 		logger.Debug("generateUpdateInfo get coreList:", m.coreList)
 		for _, e := range m.generateUpdateInfo() {
-			go func() {
-				m.inhibitAutoQuitCountAdd()
-				defer m.inhibitAutoQuitCountSub()
-				msg := fmt.Sprintf("generate package list error, detail is %v:", e)
-				m.updatePlatform.PostStatusMessage(updateplatform.StatusMessage{
-					Type:   "error",
-					Detail: msg,
-				}, false)
-				m.updatePlatform.PostProcessEventMessage(updateplatform.ProcessEvent{
-					TaskID:       1,
-					EventType:    updateplatform.GetUpdateEvent,
-					EventStatus:  false,
-					EventContent: msg,
-				})
-			}()
+			// 注释掉平台错误上报，避免影响更新页面显示
+			// go func() {
+			// 	m.inhibitAutoQuitCountAdd()
+			// 	defer m.inhibitAutoQuitCountSub()
+			// 	msg := fmt.Sprintf("generate package list error, detail is %v:", e)
+			// 	m.updatePlatform.PostStatusMessage(updateplatform.StatusMessage{
+			// 		Type:   "error",
+			// 		Detail: msg,
+			// 	}, false)
+			// 	m.updatePlatform.PostProcessEventMessage(updateplatform.ProcessEvent{
+			// 		TaskID:       1,
+			// 		EventType:    updateplatform.GetUpdateEvent,
+			// 		EventStatus:  false,
+			// 		EventContent: msg,
+			// 	})
+			// }()
 			logger.Warning(e)
 		}
 		m.statusManager.updateSourceOnce = true
@@ -708,21 +709,22 @@ func (m *Manager) refreshUpdateInfos(sync bool) {
 			// 刷新一下包信息
 			if isFirstBoot() {
 				for _, e := range m.generateUpdateInfo() {
-					go func() {
-						m.inhibitAutoQuitCountAdd()
-						defer m.inhibitAutoQuitCountSub()
-						msg := fmt.Sprintf("generate package list error, detail is %v:", e)
-						m.updatePlatform.PostStatusMessage(updateplatform.StatusMessage{
-							Type:   "error",
-							Detail: msg,
-						}, false)
-						m.updatePlatform.PostProcessEventMessage(updateplatform.ProcessEvent{
-							TaskID:       1,
-							EventType:    updateplatform.GetUpdateEvent,
-							EventStatus:  false,
-							EventContent: msg,
-						})
-					}()
+					// 注释掉平台错误上报，避免影响更新页面显示
+					// go func() {
+					// 	m.inhibitAutoQuitCountAdd()
+					// 	defer m.inhibitAutoQuitCountSub()
+					// 	msg := fmt.Sprintf("generate package list error, detail is %v:", e)
+					// 	m.updatePlatform.PostStatusMessage(updateplatform.StatusMessage{
+					// 		Type:   "error",
+					// 		Detail: msg,
+					// 	}, false)
+					// 	m.updatePlatform.PostProcessEventMessage(updateplatform.ProcessEvent{
+					// 		TaskID:       1,
+					// 		EventType:    updateplatform.GetUpdateEvent,
+					// 		EventStatus:  false,
+					// 		EventContent: msg,
+					// 	})
+					// }()
 					logger.Warning(e)
 				}
 			}
