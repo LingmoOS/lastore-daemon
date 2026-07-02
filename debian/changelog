@@ -1,3 +1,9 @@
+lastore-daemon (6.2.54.lingmo.1) unstable; urgency=medium
+
+  * fix: license D-Bus 服务不可用时放过授权检查，修复社区版更新报 "not authorized"
+
+ -- Lingmo OS Team <team@lingmo.org>  Thu, 02 Jul 2026 23:03:00 +0800
+
 lastore-daemon (6.2.53.lingmo.1) unstable; urgency=medium
 
   * new release for Lingmo OS.

@@ -234,8 +234,9 @@ func IsAuthorized() bool {
 	licenseObj := license.NewLicense(sysBus.Conn())
 	state, err := licenseObj.AuthorizationState().Get(0)
 	if err != nil {
-		logger.Warning(err)
-		return false
+		// license 服务不可用时（例如社区版/非Deepin发行版），默认授权通过
+		logger.Warning("License service unavailable, allowing update:", err)
+		return true
 	}
 	if UiActiveState(state) == Authorized || UiActiveState(state) == TrialAuthorized {
 		return true
