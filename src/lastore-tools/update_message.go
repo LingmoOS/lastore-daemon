@@ -13,12 +13,12 @@ import (
 	"path/filepath"
 	"regexp"
 
-	. "github.com/linuxdeepin/lastore-daemon/src/internal/config"
-	"github.com/linuxdeepin/lastore-daemon/src/internal/system"
-	"github.com/linuxdeepin/lastore-daemon/src/internal/updateplatform"
+	. "github.com/LingmoOS/lastore-daemon/src/internal/config"
+	"github.com/LingmoOS/lastore-daemon/src/internal/system"
+	"github.com/LingmoOS/lastore-daemon/src/internal/updateplatform"
 
 	"github.com/godbus/dbus/v5"
-	"github.com/linuxdeepin/go-lib/dbusutil"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/dbusutil"
 )
 
 const (
@@ -125,7 +125,7 @@ func collectLogs() {
 func getUpdateJosStatusProperty(conn *dbus.Conn, jobPath string) string {
 	var variant dbus.Variant
 	err := conn.Object(lastoreDBusDest, dbus.ObjectPath(jobPath)).Call(
-		"org.freedesktop.DBus.Properties.Get", 0, "org.deepin.dde.Lastore1.Job", "Status").Store(&variant)
+		"org.freedesktop.DBus.Properties.Get", 0, "org.lingmo.Lastore1.Job", "Status").Store(&variant)
 	if err != nil {
 		logger.Warning(err, jobPath)
 		return ""

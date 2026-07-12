@@ -11,22 +11,22 @@ import (
 	"path"
 	"time"
 
-	. "github.com/linuxdeepin/lastore-daemon/src/internal/config"
-	"github.com/linuxdeepin/lastore-daemon/src/internal/system"
-	"github.com/linuxdeepin/lastore-daemon/src/internal/system/dut"
+	. "github.com/LingmoOS/lastore-daemon/src/internal/config"
+	"github.com/LingmoOS/lastore-daemon/src/internal/system"
+	"github.com/LingmoOS/lastore-daemon/src/internal/system/dut"
 
 	"github.com/godbus/dbus/v5"
-	"github.com/linuxdeepin/dde-api/inhibit_hint"
-	"github.com/linuxdeepin/go-lib/dbusutil"
-	"github.com/linuxdeepin/go-lib/gettext"
-	"github.com/linuxdeepin/go-lib/log"
+	"github.com/LingmoOS/velora-api/inhibit_hint"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/dbusutil"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/gettext"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/log"
 )
 
 const (
 	// D-Bus service name for lastore service
-	dbusServiceName = "org.deepin.dde.Lastore1"
+	dbusServiceName = "org.lingmo.Lastore1"
 	// D-Bus object path for lastore manager and updater object
-	dbusObjectPath = "/org/deepin/dde/Lastore1"
+	dbusObjectPath = "/org/lingmo/Lastore1"
 )
 
 const (

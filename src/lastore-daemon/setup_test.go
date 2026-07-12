@@ -12,7 +12,7 @@ func init() {
 import (
 	proxy "./dbusproxy"
 	. "github.com/smartystreets/goconvey/convey"
-	//	"github.com/linuxdeepin/go-lib/dbus"
+	//	"github.com/LingmoOS/golang-github-lingmo-go-lib/dbus"
 	"fmt"
 	"testing"
 )

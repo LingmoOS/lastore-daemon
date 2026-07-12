@@ -10,7 +10,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/linuxdeepin/lastore-daemon/src/lastore-update-tools/config/cache"
+	"github.com/LingmoOS/lastore-daemon/src/lastore-update-tools/config/cache"
 )
 
 var TmpBaseDir string

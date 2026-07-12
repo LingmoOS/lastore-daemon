@@ -7,7 +7,7 @@ package main
 import (
 	"path"
 
-	"github.com/linuxdeepin/lastore-daemon/src/internal/system"
+	"github.com/LingmoOS/lastore-daemon/src/internal/system"
 )
 
 type ApplicationInfo struct {

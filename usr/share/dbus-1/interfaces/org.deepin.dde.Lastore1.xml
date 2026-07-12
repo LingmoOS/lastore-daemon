@@ -1,5 +1,5 @@
 <node>
-     <interface name="org.deepin.dde.Lastore1.Manager">
+     <interface name="org.lingmo.Lastore1.Manager">
           <method name="CheckUpgrade">
                <arg type="u" direction="in"></arg>
                <arg type="u" direction="in"></arg>
@@ -140,7 +140,7 @@
           <property name="UpgradeDeliveryEnabled" type="b" access="read"></property>
      </interface>
 
-     <interface name="org.deepin.dde.Lastore1.Updater">
+     <interface name="org.lingmo.Lastore1.Updater">
           <method name="ApplicationUpdateInfos">
                <arg type="s" direction="in"></arg>
                <arg type="a(sssss)" direction="out"></arg>

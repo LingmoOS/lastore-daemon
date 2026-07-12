@@ -9,7 +9,7 @@ readonly UPDATE_RUN_FLAG="/tmp/update_has_run"
 start_lastore_daemon() {
     local dbus_path="org.deepin.dde.Lastore1"
     local object_path="/org/deepin/dde/Lastore1"
-    local interface="org.deepin.dde.Lastore1.Manager"
+    local interface="org.lingmo.Lastore1.Manager"
     local property="JobList"
 
     # Execute busctl command to trigger lastore-daemon service

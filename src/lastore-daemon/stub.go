@@ -166,7 +166,7 @@ func DestroyJobDBus(j *Job) {
 }
 
 func (j *Job) getPath() dbus.ObjectPath {
-	return dbus.ObjectPath("/org/deepin/dde/Lastore1/Job" + j.Id)
+	return dbus.ObjectPath("/org/lingmo/Lastore1/Job" + j.Id)
 }
 
 func (j *Job) notifyAll() {

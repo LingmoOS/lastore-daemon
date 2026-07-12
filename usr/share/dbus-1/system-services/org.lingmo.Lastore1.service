@@ -1,4 +1,4 @@
 [D-BUS Service]
-Name=org.deepin.dde.Lastore1
+Name=org.lingmo.Lastore1
 Exec=/bin/false
 SystemdService=lastore-daemon.service

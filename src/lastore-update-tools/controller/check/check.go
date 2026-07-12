@@ -8,12 +8,12 @@ import (
 	"strings"
 
 	"github.com/jouyouyun/hardware/utils"
-	"github.com/linuxdeepin/go-lib/log"
-	utils2 "github.com/linuxdeepin/go-lib/utils"
-	"github.com/linuxdeepin/lastore-daemon/src/internal/system"
-	"github.com/linuxdeepin/lastore-daemon/src/lastore-update-tools/config/cache"
-	runcmd "github.com/linuxdeepin/lastore-daemon/src/lastore-update-tools/pkg/utils/cmd"
-	"github.com/linuxdeepin/lastore-daemon/src/lastore-update-tools/sysinfo"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/log"
+	utils2 "github.com/LingmoOS/golang-github-lingmo-go-lib/utils"
+	"github.com/LingmoOS/lastore-daemon/src/internal/system"
+	"github.com/LingmoOS/lastore-daemon/src/lastore-update-tools/config/cache"
+	runcmd "github.com/LingmoOS/lastore-daemon/src/lastore-update-tools/pkg/utils/cmd"
+	"github.com/LingmoOS/lastore-daemon/src/lastore-update-tools/sysinfo"
 )
 
 var CheckBaseDir = "/var/lib/lastore/check/"

@@ -4,7 +4,7 @@ Wants=lastore-daemon.service
 
 [Service]
 CapabilityBoundingSet=
-ExecStart=/usr/bin/dbus-send --system --print-reply --dest=org.deepin.dde.Lastore1 /org/deepin/dde/Lastore1 org.deepin.dde.Lastore1.Manager.HandleSystemEvent string:AutoDownload
+ExecStart=/usr/bin/dbus-send --system --print-reply --dest=org.lingmo.Lastore1 /org/lingmo/Lastore1 org.lingmo.Lastore1.Manager.HandleSystemEvent string:AutoDownload
 InaccessiblePaths=-/etc/shadow -/etc/pam.d/ -/etc/NetworkManager/system-connections/ -/etc/security/ -/etc/selinux/ -/etc/deepin-elf-verify/ -/etc/filearmor.d/ -/etc/crypttab -/etc/fstab -/sysroot/ostree/repo/ -/persistent/ostree/repo/
 MemoryDenyWriteExecute=true
 NoNewPrivileges=true

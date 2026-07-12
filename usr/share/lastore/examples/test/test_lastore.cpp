@@ -21,7 +21,7 @@
 #include "lastore-daemon.h"
 using namespace dbus::common;
 using namespace dbus::objects;
-using namespace dbus::objects::com::deepin::lastore;
+using namespace dbus::objects::com::lingmo::lastore;
 
 Job* j = 0;
 void printStatus() {
@@ -38,7 +38,7 @@ void install_package(const char* package)
     return;
   }
 
-  j = new Job(QString("system"), "org.deepin.dde.Lastore1", rpath.Value<0>().path());
+  j = new Job(QString("system"), "org.lingmo.dde.Lastore1", rpath.Value<0>().path());
   j->connect(j, &Job::progressChanged, printStatus);
   R<void> r =  m->StartJob(j->id().Value<0>());
  
@@ -58,7 +58,7 @@ void remove_package(const char* package)
     return;
   }
 
-  j = new Job(QString("system"), "org.deepin.dde.Lastore1", rpath.Value<0>().path());
+  j = new Job(QString("system"), "org.lingmo.dde.Lastore1", rpath.Value<0>().path());
   j->connect(j, &Job::progressChanged, printStatus);
   R<void> r =  m->StartJob(j->id().Value<0>());
   
@@ -71,6 +71,6 @@ void remove_package(const char* package)
 
 void body()
 {
-  install_package("deepin-movie");
-  remove_package("deepin-movie");
+  install_package("lingmo-movie");
+  remove_package("lingmo-movie");
 }

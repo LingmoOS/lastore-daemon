@@ -7,10 +7,10 @@ package dut
 import (
 	"fmt"
 
-	"github.com/linuxdeepin/lastore-daemon/src/internal/system"
-	libCheck "github.com/linuxdeepin/lastore-daemon/src/lastore-update-tools/cli"
+	"github.com/LingmoOS/lastore-daemon/src/internal/system"
+	libCheck "github.com/LingmoOS/lastore-daemon/src/lastore-update-tools/cli"
 
-	"github.com/linuxdeepin/go-lib/log"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/log"
 )
 
 const (

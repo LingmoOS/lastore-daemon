@@ -12,10 +12,10 @@ import (
 	"time"
 
 	"github.com/godbus/dbus/v5"
-	"github.com/linuxdeepin/go-lib/dbusutil"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/dbusutil"
 
-	"github.com/linuxdeepin/lastore-daemon/src/internal/system"
-	"github.com/linuxdeepin/lastore-daemon/src/internal/utils"
+	"github.com/LingmoOS/lastore-daemon/src/internal/system"
+	"github.com/LingmoOS/lastore-daemon/src/internal/utils"
 )
 
 const (

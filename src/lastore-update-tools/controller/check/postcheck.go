@@ -4,10 +4,10 @@ import (
 	"fmt"
 
 	"github.com/godbus/dbus/v5"
-	systemd1 "github.com/linuxdeepin/go-dbus-factory/system/org.freedesktop.systemd1"
-	"github.com/linuxdeepin/go-lib/dbusutil"
-	"github.com/linuxdeepin/lastore-daemon/src/internal/system"
-	runcmd "github.com/linuxdeepin/lastore-daemon/src/lastore-update-tools/pkg/utils/cmd"
+	systemd1 "github.com/LingmoOS/golang-github-lingmo-go-dbus-factory/system/org.freedesktop.systemd1"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/dbusutil"
+	"github.com/LingmoOS/lastore-daemon/src/internal/system"
+	runcmd "github.com/LingmoOS/lastore-daemon/src/lastore-update-tools/pkg/utils/cmd"
 )
 
 const (

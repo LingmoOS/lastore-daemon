@@ -13,9 +13,9 @@ import (
 	"path/filepath"
 	"sort"
 
-	"github.com/linuxdeepin/lastore-daemon/src/internal/config"
-	"github.com/linuxdeepin/lastore-daemon/src/internal/system"
-	"github.com/linuxdeepin/lastore-daemon/src/internal/utils"
+	"github.com/LingmoOS/lastore-daemon/src/internal/config"
+	"github.com/LingmoOS/lastore-daemon/src/internal/system"
+	"github.com/LingmoOS/lastore-daemon/src/internal/utils"
 )
 
 func GenerateMirrors(repository string, fpath string) error {

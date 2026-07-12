@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/linuxdeepin/lastore-daemon/src/internal/system"
-	"github.com/linuxdeepin/lastore-daemon/src/lastore-update-tools/config/cache"
+	"github.com/LingmoOS/lastore-daemon/src/internal/system"
+	"github.com/LingmoOS/lastore-daemon/src/lastore-update-tools/config/cache"
 )
 
 func CheckVerifyCacheInfo(cfg *cache.CacheInfo) error {

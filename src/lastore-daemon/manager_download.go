@@ -12,13 +12,13 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/linuxdeepin/lastore-daemon/src/internal/system"
-	"github.com/linuxdeepin/lastore-daemon/src/internal/system/dut"
-	"github.com/linuxdeepin/lastore-daemon/src/internal/updateplatform"
+	"github.com/LingmoOS/lastore-daemon/src/internal/system"
+	"github.com/LingmoOS/lastore-daemon/src/internal/system/dut"
+	"github.com/LingmoOS/lastore-daemon/src/internal/updateplatform"
 
 	"github.com/godbus/dbus/v5"
-	"github.com/linuxdeepin/go-lib/dbusutil"
-	"github.com/linuxdeepin/go-lib/gettext"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/dbusutil"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/gettext"
 )
 
 // calculateTotalDownloadSize calculates the total download size for all packages under the specified update mode

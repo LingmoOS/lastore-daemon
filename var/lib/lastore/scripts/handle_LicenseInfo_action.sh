@@ -1,3 +1,3 @@
 #!/bin/bash
 
-dbus-send --system --print-reply --dest=org.deepin.dde.Lastore1 /org/deepin/dde/Lastore1 org.deepin.dde.Lastore1.Manager.HandleSystemEvent string:"OsVersionChanged"
+dbus-send --system --print-reply --dest=org.lingmo.Lastore1 /org/lingmo/Lastore1 org.lingmo.Lastore1.Manager.HandleSystemEvent string:"OsVersionChanged"

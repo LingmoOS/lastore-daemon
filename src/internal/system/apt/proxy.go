@@ -18,7 +18,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/linuxdeepin/lastore-daemon/src/internal/system"
+	"github.com/LingmoOS/lastore-daemon/src/internal/system"
 )
 
 const aptLimitKey = "Acquire::http::Dl-Limit"

@@ -21,9 +21,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/linuxdeepin/lastore-daemon/src/internal/utils"
+	"github.com/LingmoOS/lastore-daemon/src/internal/utils"
 
-	utils2 "github.com/linuxdeepin/go-lib/utils"
+	utils2 "github.com/LingmoOS/golang-github-lingmo-go-lib/utils"
 )
 
 const (

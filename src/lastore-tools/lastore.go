@@ -10,12 +10,12 @@ import (
 	"strings"
 	"time"
 
-	"github.com/linuxdeepin/lastore-daemon/src/internal/dstore"
-	"github.com/linuxdeepin/lastore-daemon/src/internal/system"
+	"github.com/LingmoOS/lastore-daemon/src/internal/dstore"
+	"github.com/LingmoOS/lastore-daemon/src/internal/system"
 
 	"github.com/codegangsta/cli"
 	"github.com/godbus/dbus/v5"
-	lastore "github.com/linuxdeepin/go-dbus-factory/system/org.deepin.dde.lastore1"
+	lastore "github.com/LingmoOS/golang-github-lingmo-go-dbus-factory/system/org.lingmo.lastore1"
 )
 
 var CMDTester = cli.Command{

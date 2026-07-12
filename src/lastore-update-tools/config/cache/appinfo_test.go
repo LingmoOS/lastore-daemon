@@ -11,7 +11,7 @@ import (
 	"log"
 	"testing"
 
-	"github.com/linuxdeepin/lastore-daemon/src/lastore-update-tools/pkg/utils/fs"
+	"github.com/LingmoOS/lastore-daemon/src/lastore-update-tools/pkg/utils/fs"
 )
 
 var validinfo = &AppInfo{

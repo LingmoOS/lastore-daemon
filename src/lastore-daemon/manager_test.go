@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/linuxdeepin/lastore-daemon/src/internal/config"
-	"github.com/linuxdeepin/lastore-daemon/src/internal/system"
+	"github.com/LingmoOS/lastore-daemon/src/internal/config"
+	"github.com/LingmoOS/lastore-daemon/src/internal/system"
 
-	"github.com/linuxdeepin/go-lib/keyfile"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/keyfile"
 	"github.com/stretchr/testify/assert"
 )
 

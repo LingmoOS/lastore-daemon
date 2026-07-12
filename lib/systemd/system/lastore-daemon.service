@@ -17,7 +17,7 @@ After=display-manager.service
 # RestrictSUIDSGID=true is not set because some packages may need to set SUID and SGID during installation.
 # StateDirectory=lastore is not set because it would conflict with the ownership of smartmirror-daemon and build-system-info services, which need to be owned by deepin-daemon, and enabling this would set the owner to root.
 
-BusName=org.deepin.dde.Lastore1
+BusName=org.lingmo.Lastore1
 CacheDirectory=lastore
 ExecStart=/usr/libexec/lastore-daemon/lastore-daemon
 NoNewPrivileges=true

@@ -7,10 +7,10 @@ package coremodules
 import (
 	"fmt"
 
-	"github.com/linuxdeepin/go-lib/log"
-	"github.com/linuxdeepin/lastore-daemon/src/internal/system"
-	"github.com/linuxdeepin/lastore-daemon/src/lastore-update-tools/config/cache"
-	"github.com/linuxdeepin/lastore-daemon/src/lastore-update-tools/controller/check"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/log"
+	"github.com/LingmoOS/lastore-daemon/src/internal/system"
+	"github.com/LingmoOS/lastore-daemon/src/lastore-update-tools/config/cache"
+	"github.com/LingmoOS/lastore-daemon/src/lastore-update-tools/controller/check"
 )
 
 var (

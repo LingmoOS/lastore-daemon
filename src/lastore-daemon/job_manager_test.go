@@ -7,8 +7,8 @@ package main
 import (
 	"testing"
 
-	"github.com/linuxdeepin/lastore-daemon/src/internal/system"
-	"github.com/linuxdeepin/lastore-daemon/src/internal/system/apt"
+	"github.com/LingmoOS/lastore-daemon/src/internal/system"
+	"github.com/LingmoOS/lastore-daemon/src/internal/system/apt"
 
 	"github.com/stretchr/testify/assert"
 )

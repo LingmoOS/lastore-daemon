@@ -5,7 +5,7 @@ import (
 	"os"
 	"reflect"
 
-	"github.com/linuxdeepin/lastore-daemon/src/lastore-update-tools/pkg/utils/fs"
+	"github.com/LingmoOS/lastore-daemon/src/lastore-update-tools/pkg/utils/fs"
 )
 
 // UpdateInfo 数据结构体

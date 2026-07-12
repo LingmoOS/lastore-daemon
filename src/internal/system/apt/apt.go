@@ -12,9 +12,9 @@ import (
 	"strings"
 	"syscall"
 
-	"github.com/linuxdeepin/lastore-daemon/src/internal/system"
+	"github.com/LingmoOS/lastore-daemon/src/internal/system"
 
-	"github.com/linuxdeepin/go-lib/log"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/log"
 )
 
 var logger = log.NewLogger("lastore/apt")

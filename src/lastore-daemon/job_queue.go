@@ -6,7 +6,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/linuxdeepin/lastore-daemon/src/internal/system"
+	"github.com/LingmoOS/lastore-daemon/src/internal/system"
 	"sort"
 	"strings"
 	"sync"

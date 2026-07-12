@@ -7,7 +7,7 @@ import (
 	"os"
 	"os/exec"
 
-	"github.com/linuxdeepin/lastore-daemon/src/internal/system"
+	"github.com/LingmoOS/lastore-daemon/src/internal/system"
 )
 
 // 格式化输出需要添加-j 参数

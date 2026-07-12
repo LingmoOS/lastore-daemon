@@ -11,9 +11,9 @@ import (
 	"os"
 	"time"
 
-	"github.com/linuxdeepin/lastore-daemon/src/internal/system"
-	"github.com/linuxdeepin/lastore-daemon/src/internal/system/dut"
-	"github.com/linuxdeepin/lastore-daemon/src/internal/updateplatform"
+	"github.com/LingmoOS/lastore-daemon/src/internal/system"
+	"github.com/LingmoOS/lastore-daemon/src/internal/system/dut"
+	"github.com/LingmoOS/lastore-daemon/src/internal/updateplatform"
 
 	"github.com/godbus/dbus/v5"
 )

@@ -16,14 +16,14 @@ import (
 	"sync"
 	"time"
 
-	. "github.com/linuxdeepin/lastore-daemon/src/internal/config"
-	"github.com/linuxdeepin/lastore-daemon/src/internal/system"
-	"github.com/linuxdeepin/lastore-daemon/src/internal/updateplatform"
+	. "github.com/LingmoOS/lastore-daemon/src/internal/config"
+	"github.com/LingmoOS/lastore-daemon/src/internal/system"
+	"github.com/LingmoOS/lastore-daemon/src/internal/updateplatform"
 
 	"github.com/godbus/dbus/v5"
-	systemd1 "github.com/linuxdeepin/go-dbus-factory/system/org.freedesktop.systemd1"
-	"github.com/linuxdeepin/go-lib/dbusutil"
-	"github.com/linuxdeepin/go-lib/strv"
+	systemd1 "github.com/LingmoOS/golang-github-lingmo-go-dbus-factory/system/org.freedesktop.systemd1"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/dbusutil"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/strv"
 )
 
 const (
@@ -119,13 +119,13 @@ func SetAPTSmartMirror(url string) error {
 
 func (u *Updater) refreshUpgradeDeliveryService() {
 	// 检查upgrade服务是否被正常安装
-	_, err := u.service.NameHasOwner("org.deepin.upgradedelivery")
+	_, err := u.service.NameHasOwner("org.lingmo.upgradedelivery")
 	if err != nil {
 		logger.Warning(err)
 		u.setPropP2PUpdateSupport(false)
 		return
 	}
-	object := u.service.Conn().Object("org.deepin.upgradedelivery", "/org/deepin/upgradedelivery")
+	object := u.service.Conn().Object("org.lingmo.upgradedelivery", "/org/lingmo/upgradedelivery")
 	var ret dbus.Variant
 	ctx, _ := context.WithTimeout(context.Background(), 1*time.Second)
 	err = object.CallWithContext(ctx, "org.deepin.upgradedelivery.ServiceStatus", 0).Store(&ret)

@@ -17,16 +17,16 @@ import (
 	"sync"
 	"time"
 
-	"github.com/linuxdeepin/lastore-daemon/src/internal/config"
-	"github.com/linuxdeepin/lastore-daemon/src/internal/system/dut"
+	"github.com/LingmoOS/lastore-daemon/src/internal/config"
+	"github.com/LingmoOS/lastore-daemon/src/internal/system/dut"
 
-	"github.com/linuxdeepin/lastore-daemon/src/internal/system"
-	"github.com/linuxdeepin/lastore-daemon/src/internal/updateplatform"
+	"github.com/LingmoOS/lastore-daemon/src/internal/system"
+	"github.com/LingmoOS/lastore-daemon/src/internal/updateplatform"
 
 	"github.com/godbus/dbus/v5"
-	"github.com/linuxdeepin/go-lib/dbusutil"
-	"github.com/linuxdeepin/go-lib/gettext"
-	"github.com/linuxdeepin/go-lib/utils"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/dbusutil"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/gettext"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/utils"
 )
 
 func (m *Manager) retryDistUpgrade(upgradeJob *Job, needBackup bool) error {
@@ -719,7 +719,7 @@ func (m *Manager) preFailedHook(job *Job, mode system.UpdateType, uuid string) e
 			msg := gettext.Tr("Updates failed: insufficient disk space. Please reboot to avoid the effect on your system.")
 			action := []string{"reboot", gettext.Tr("Reboot")}
 			hints := map[string]dbus.Variant{
-				"x-deepin-action-reboot":      dbus.MakeVariant("dbus-send,--session,--print-reply,--dest=org.deepin.dde.ShutdownFront1,/org/deepin/dde/ShutdownFront1,org.deepin.dde.ShutdownFront1.Restart"),
+				"x-deepin-action-reboot":      dbus.MakeVariant("dbus-send,--session,--print-reply,--dest=org.lingmo.ShutdownFront1,/org/lingmo/ShutdownFront1,org.lingmo.ShutdownFront1.Restart"),
 				"x-deepin-NoAnimationActions": dbus.MakeVariant("reboot")}
 			// 未备份
 			if m.statusManager.abStatus != system.HasBackedUp {
@@ -738,7 +738,7 @@ func (m *Manager) preFailedHook(job *Job, mode system.UpdateType, uuid string) e
 			msg := gettext.Tr("Updates failed. Please reboot to avoid the effect on your system.")
 			action := []string{"reboot", gettext.Tr("Reboot")}
 			hints := map[string]dbus.Variant{
-				"x-deepin-action-reboot":      dbus.MakeVariant("dbus-send,--session,--print-reply,--dest=org.deepin.dde.ShutdownFront1,/org/deepin/dde/ShutdownFront1,org.deepin.dde.ShutdownFront1.Restart"),
+				"x-deepin-action-reboot":      dbus.MakeVariant("dbus-send,--session,--print-reply,--dest=org.lingmo.ShutdownFront1,/org/lingmo/ShutdownFront1,org.lingmo.ShutdownFront1.Restart"),
 				"x-deepin-NoAnimationActions": dbus.MakeVariant("reboot")}
 			// 未备份
 			if m.statusManager.abStatus != system.HasBackedUp {
@@ -835,7 +835,7 @@ func (m *Manager) afterUpgradeCmdSuccessHook() error {
 	msg := gettext.Tr("Restart the computer to use the system and applications properly.")
 	action := []string{"reboot", gettext.Tr("Reboot Now"), "cancel", gettext.Tr("Reboot Later")}
 	hints := map[string]dbus.Variant{
-		"x-deepin-action-reboot":      dbus.MakeVariant("dbus-send,--session,--print-reply,--dest=org.deepin.dde.ShutdownFront1,/org/deepin/dde/ShutdownFront1,org.deepin.dde.ShutdownFront1.Restart"),
+		"x-deepin-action-reboot":      dbus.MakeVariant("dbus-send,--session,--print-reply,--dest=org.lingmo.ShutdownFront1,/org/lingmo/ShutdownFront1,org.lingmo.ShutdownFront1.Restart"),
 		"x-deepin-NoAnimationActions": dbus.MakeVariant("reboot")}
 	go m.sendNotify(updateNotifyShow, 0, "system-updated", summary, msg, action, hints, system.NotifyExpireTimeoutNoHide)
 	return nil

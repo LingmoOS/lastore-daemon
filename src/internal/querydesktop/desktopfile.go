@@ -11,7 +11,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/linuxdeepin/go-lib/keyfile"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/keyfile"
 )
 
 // TODO: write tools to analyze the score of desktop in debs

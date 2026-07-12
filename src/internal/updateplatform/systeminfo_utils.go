@@ -22,8 +22,8 @@ import (
 
 	"github.com/godbus/dbus/v5"
 	"github.com/jouyouyun/hardware/utils"
-	utils2 "github.com/linuxdeepin/go-lib/utils"
-	"github.com/linuxdeepin/lastore-daemon/src/internal/system"
+	utils2 "github.com/LingmoOS/golang-github-lingmo-go-lib/utils"
+	"github.com/LingmoOS/lastore-daemon/src/internal/system"
 
 	hhardware "github.com/jouyouyun/hardware"
 )
@@ -378,7 +378,7 @@ func getSN() (string, error) {
 	}
 	object := systemBus.Object("com.deepin.license", "/com/deepin/license/Info")
 	var ret dbus.Variant
-	err = object.Call("org.freedesktop.DBus.Properties.Get", 0, "com.deepin.license.Info", "ActiveCode").Store(&ret)
+	err = object.Call("org.freedesktop.DBus.Properties.Get", 0, "com.lingmo.license.Info", "ActiveCode").Store(&ret)
 	if err != nil {
 		return "", err
 	}

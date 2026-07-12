@@ -11,9 +11,9 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/linuxdeepin/lastore-daemon/src/internal/system"
+	"github.com/LingmoOS/lastore-daemon/src/internal/system"
 
-	utils2 "github.com/linuxdeepin/go-lib/utils"
+	utils2 "github.com/LingmoOS/golang-github-lingmo-go-lib/utils"
 )
 
 type RepoType string

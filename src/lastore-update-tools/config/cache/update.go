@@ -5,8 +5,8 @@ import (
 	"io/ioutil"
 	"os"
 
-	"github.com/linuxdeepin/go-lib/log"
-	"github.com/linuxdeepin/lastore-daemon/src/lastore-update-tools/pkg/utils/fs"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/log"
+	"github.com/LingmoOS/lastore-daemon/src/lastore-update-tools/pkg/utils/fs"
 	"gopkg.in/yaml.v2"
 )
 

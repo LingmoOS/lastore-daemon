@@ -10,10 +10,10 @@ import (
 	"os"
 	"time"
 
-	"github.com/linuxdeepin/lastore-daemon/src/internal/utils"
+	"github.com/LingmoOS/lastore-daemon/src/internal/utils"
 
-	"github.com/linuxdeepin/go-lib/dbusutil"
-	"github.com/linuxdeepin/go-lib/log"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/dbusutil"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/log"
 )
 
 //go:generate dbusutil-gen em -type SmartMirror

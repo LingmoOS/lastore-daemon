@@ -7,11 +7,11 @@ package coremodules
 import (
 	"fmt"
 
-	"github.com/linuxdeepin/lastore-daemon/src/internal/system"
-	"github.com/linuxdeepin/lastore-daemon/src/lastore-update-tools/config"
-	"github.com/linuxdeepin/lastore-daemon/src/lastore-update-tools/config/cache"
-	"github.com/linuxdeepin/lastore-daemon/src/lastore-update-tools/controller/check"
-	"github.com/linuxdeepin/lastore-daemon/src/lastore-update-tools/pkg/utils/fs"
+	"github.com/LingmoOS/lastore-daemon/src/internal/system"
+	"github.com/LingmoOS/lastore-daemon/src/lastore-update-tools/config"
+	"github.com/LingmoOS/lastore-daemon/src/lastore-update-tools/config/cache"
+	"github.com/LingmoOS/lastore-daemon/src/lastore-update-tools/controller/check"
+	"github.com/LingmoOS/lastore-daemon/src/lastore-update-tools/pkg/utils/fs"
 )
 
 var (

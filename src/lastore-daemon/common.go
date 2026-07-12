@@ -23,17 +23,17 @@ import (
 	"time"
 	"unicode/utf8"
 
-	"github.com/linuxdeepin/dde-api/polkit"
-	utils2 "github.com/linuxdeepin/go-lib/utils"
-	"github.com/linuxdeepin/lastore-daemon/src/internal/config"
-	"github.com/linuxdeepin/lastore-daemon/src/internal/system"
-	"github.com/linuxdeepin/lastore-daemon/src/internal/system/apt"
-	"github.com/linuxdeepin/lastore-daemon/src/internal/utils"
+	"github.com/LingmoOS/velora-api/polkit"
+	utils2 "github.com/LingmoOS/golang-github-lingmo-go-lib/utils"
+	"github.com/LingmoOS/lastore-daemon/src/internal/config"
+	"github.com/LingmoOS/lastore-daemon/src/internal/system"
+	"github.com/LingmoOS/lastore-daemon/src/internal/system/apt"
+	"github.com/LingmoOS/lastore-daemon/src/internal/utils"
 
 	"github.com/godbus/dbus/v5"
-	"github.com/linuxdeepin/go-lib/dbusutil"
-	"github.com/linuxdeepin/go-lib/procfs"
-	"github.com/linuxdeepin/go-lib/strv"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/dbusutil"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/procfs"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/strv"
 )
 
 var _urlReg = regexp.MustCompile(`^[ ]*deb .*((?:https?|ftp|file|p2p|delivery)://[^ ]+)`)

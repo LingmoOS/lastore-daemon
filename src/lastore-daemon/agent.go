@@ -12,13 +12,13 @@ import (
 	"sync"
 
 	"github.com/godbus/dbus/v5"
-	lastoreAgent "github.com/linuxdeepin/go-dbus-factory/session/org.deepin.dde.lastore1.agent"
-	dbus2 "github.com/linuxdeepin/go-dbus-factory/system/org.freedesktop.dbus"
-	login1 "github.com/linuxdeepin/go-dbus-factory/system/org.freedesktop.login1"
-	"github.com/linuxdeepin/go-lib/dbusutil"
-	"github.com/linuxdeepin/go-lib/gettext"
-	"github.com/linuxdeepin/go-lib/strv"
-	"github.com/linuxdeepin/lastore-daemon/src/internal/utils"
+	lastoreAgent "github.com/LingmoOS/golang-github-lingmo-go-dbus-factory/session/org.lingmo.lastore1.agent"
+	dbus2 "github.com/LingmoOS/golang-github-lingmo-go-dbus-factory/system/org.freedesktop.dbus"
+	login1 "github.com/LingmoOS/golang-github-lingmo-go-dbus-factory/system/org.freedesktop.login1"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/dbusutil"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/gettext"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/strv"
+	"github.com/LingmoOS/lastore-daemon/src/internal/utils"
 )
 
 const userAgentRecordPath = "/tmp/lastoreAgentCache"

@@ -16,27 +16,27 @@ import (
 	"sync"
 	"time"
 
-	"github.com/linuxdeepin/lastore-daemon/src/internal/config"
-	"github.com/linuxdeepin/lastore-daemon/src/internal/system"
-	"github.com/linuxdeepin/lastore-daemon/src/internal/updateplatform"
+	"github.com/LingmoOS/lastore-daemon/src/internal/config"
+	"github.com/LingmoOS/lastore-daemon/src/internal/system"
+	"github.com/LingmoOS/lastore-daemon/src/internal/updateplatform"
 
 	"github.com/godbus/dbus/v5"
-	"github.com/linuxdeepin/dde-api/polkit"
-	ConfigManager "github.com/linuxdeepin/go-dbus-factory/org.desktopspec.ConfigManager"
-	accounts "github.com/linuxdeepin/go-dbus-factory/system/org.deepin.dde.accounts1"
-	power "github.com/linuxdeepin/go-dbus-factory/system/org.deepin.dde.power1"
-	ofdbus "github.com/linuxdeepin/go-dbus-factory/system/org.freedesktop.dbus"
-	login1 "github.com/linuxdeepin/go-dbus-factory/system/org.freedesktop.login1"
-	systemd1 "github.com/linuxdeepin/go-dbus-factory/system/org.freedesktop.systemd1"
+	"github.com/LingmoOS/velora-api/polkit"
+	ConfigManager "github.com/LingmoOS/golang-github-lingmo-go-dbus-factory/org.desktopspec.ConfigManager"
+	accounts "github.com/LingmoOS/golang-github-lingmo-go-dbus-factory/system/org.lingmo.accounts1"
+	power "github.com/LingmoOS/golang-github-lingmo-go-dbus-factory/system/org.lingmo.power1"
+	ofdbus "github.com/LingmoOS/golang-github-lingmo-go-dbus-factory/system/org.freedesktop.dbus"
+	login1 "github.com/LingmoOS/golang-github-lingmo-go-dbus-factory/system/org.freedesktop.login1"
+	systemd1 "github.com/LingmoOS/golang-github-lingmo-go-dbus-factory/system/org.freedesktop.systemd1"
 
-	"github.com/linuxdeepin/go-lib/dbusutil"
-	"github.com/linuxdeepin/go-lib/gettext"
-	"github.com/linuxdeepin/go-lib/strv"
-	"github.com/linuxdeepin/go-lib/utils"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/dbusutil"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/gettext"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/strv"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/utils"
 )
 
 const (
-	UserExperServiceName = "com.deepin.userexperience.Daemon"
+	UserExperServiceName = "com.lingmo.userexperience.Daemon"
 	UserExperPath        = "/com/deepin/userexperience/Daemon"
 
 	UserExperInstallApp   = "installapp"
@@ -496,8 +496,8 @@ func (m *Manager) removePackage(sender dbus.Sender, jobName string, packages str
 				gettext.Tr("Cancel"),
 			}
 			hints := map[string]dbus.Variant{
-				"x-deepin-action-retry":  dbus.MakeVariant(fmt.Sprintf("dbus-send,--system,--print-reply,--dest=org.deepin.dde.Lastore1,/org/deepin/dde/Lastore1,org.deepin.dde.Lastore1.Manager.StartJob,string:%s", job.Id)),
-				"x-deepin-action-cancel": dbus.MakeVariant(fmt.Sprintf("dbus-send,--system,--print-reply,--dest=org.deepin.dde.Lastore1,/org/deepin/dde/Lastore1,org.deepin.dde.Lastore1.Manager.CleanJob,string:%s", job.Id))}
+				"x-deepin-action-retry":  dbus.MakeVariant(fmt.Sprintf("dbus-send,--system,--print-reply,--dest=org.lingmo.Lastore1,/org/lingmo/Lastore1,org.lingmo.Lastore1.Manager.StartJob,string:%s", job.Id)),
+				"x-deepin-action-cancel": dbus.MakeVariant(fmt.Sprintf("dbus-send,--system,--print-reply,--dest=org.lingmo.Lastore1,/org/lingmo/Lastore1,org.lingmo.Lastore1.Manager.CleanJob,string:%s", job.Id))}
 			go m.sendNotify(system.GetAppStoreAppName(), 0, "deepin-appstore", "", msg, action, hints, system.NotifyExpireTimeoutDefault)
 			return nil
 		},

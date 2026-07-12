@@ -18,7 +18,7 @@ import (
 	"time"
 
 	"github.com/godbus/dbus/v5"
-	ConfigManager "github.com/linuxdeepin/go-dbus-factory/org.desktopspec.ConfigManager"
+	ConfigManager "github.com/LingmoOS/golang-github-lingmo-go-dbus-factory/org.desktopspec.ConfigManager"
 )
 
 // UpdatePlatformManager 更新平台管理器

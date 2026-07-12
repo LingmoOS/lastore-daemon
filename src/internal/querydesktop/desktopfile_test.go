@@ -5,7 +5,7 @@
 package querydesktop
 
 import (
-	"github.com/linuxdeepin/lastore-daemon/src/internal/utils"
+	"github.com/LingmoOS/lastore-daemon/src/internal/utils"
 	"strings"
 	"testing"
 

@@ -11,11 +11,11 @@ import (
 	"os"
 	"time"
 
-	"github.com/linuxdeepin/lastore-daemon/src/internal/mirrors"
-	"github.com/linuxdeepin/lastore-daemon/src/internal/utils"
+	"github.com/LingmoOS/lastore-daemon/src/internal/mirrors"
+	"github.com/LingmoOS/lastore-daemon/src/internal/utils"
 
 	"github.com/codegangsta/cli"
-	"github.com/linuxdeepin/go-lib/log"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/log"
 )
 
 var CMDUpdater = cli.Command{

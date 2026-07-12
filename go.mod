@@ -1,4 +1,4 @@
-module github.com/linuxdeepin/lastore-daemon
+module github.com/LingmoOS/lastore-daemon
 
 go 1.20
 
@@ -10,9 +10,9 @@ require (
 	github.com/go-ini/ini v1.67.0
 	github.com/godbus/dbus/v5 v5.1.0
 	github.com/jouyouyun/hardware v0.1.8
-	github.com/linuxdeepin/dde-api v0.0.0-20230407015108-8b16b3779328
-	github.com/linuxdeepin/go-dbus-factory v0.0.0-20250422133602-ca1778dfc5c7
-	github.com/linuxdeepin/go-lib v0.0.0-20230406092403-b4b4282fc513
+	github.com/LingmoOS/velora-api v0.0.0-20230407015108-8b16b3779328
+	github.com/LingmoOS/golang-github-lingmo-go-dbus-factory v0.0.0-20250422133602-ca1778dfc5c7
+	github.com/LingmoOS/golang-github-lingmo-go-lib v0.0.0-20230406092403-b4b4282fc513
 	github.com/onsi/ginkgo v1.16.5
 	github.com/onsi/gomega v1.27.6
 	github.com/stretchr/testify v1.8.2
@@ -28,7 +28,7 @@ require (
 	github.com/gosexy/gettext v0.0.0-20160830220431-74466a0a0c4a // indirect
 	github.com/kr/pretty v0.2.1 // indirect
 	github.com/kr/text v0.1.0 // indirect
-	github.com/linuxdeepin/go-gir v0.0.0-20230331033513-a8d7a9e89f9b // indirect
+	github.com/LingmoOS/go-gir-generator v0.0.0-20230331033513-a8d7a9e89f9b // indirect
 	github.com/nxadm/tail v1.4.8 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/russross/blackfriday/v2 v2.1.0 // indirect

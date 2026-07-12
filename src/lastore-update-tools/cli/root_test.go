@@ -8,8 +8,8 @@ import (
 	"os"
 	"testing"
 
-	runcmd "github.com/linuxdeepin/lastore-daemon/src/lastore-update-tools/pkg/utils/cmd"
-	"github.com/linuxdeepin/lastore-daemon/src/lastore-update-tools/pkg/utils/fs"
+	runcmd "github.com/LingmoOS/lastore-daemon/src/lastore-update-tools/pkg/utils/cmd"
+	"github.com/LingmoOS/lastore-daemon/src/lastore-update-tools/pkg/utils/fs"
 )
 
 func createTestData() error {

@@ -6,7 +6,7 @@ import (
 	"os"
 	"io"
 
-	"github.com/linuxdeepin/lastore-daemon/src/lastore-update-tools/config/cache"
+	"github.com/LingmoOS/lastore-daemon/src/lastore-update-tools/config/cache"
 )
 
 func LoadMetaCfg(cfg string, meta *cache.CacheInfo) error {

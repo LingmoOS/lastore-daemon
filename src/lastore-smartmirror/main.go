@@ -14,7 +14,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/linuxdeepin/lastore-daemon/src/internal/utils"
+	"github.com/LingmoOS/lastore-daemon/src/internal/utils"
 
 	"github.com/godbus/dbus/v5"
 )

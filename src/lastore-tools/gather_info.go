@@ -16,8 +16,8 @@ import (
 
 	"github.com/codegangsta/cli"
 	"github.com/jouyouyun/hardware/dmi"
-	"github.com/linuxdeepin/lastore-daemon/src/internal/config"
-	"github.com/linuxdeepin/lastore-daemon/src/internal/updateplatform"
+	"github.com/LingmoOS/lastore-daemon/src/internal/config"
+	"github.com/LingmoOS/lastore-daemon/src/internal/updateplatform"
 )
 
 type Response struct {

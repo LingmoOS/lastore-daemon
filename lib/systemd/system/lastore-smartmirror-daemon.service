@@ -7,7 +7,7 @@ After=dbus.socket
 [Service]
 # Cannot set PrivateNetwork=yes because network access is required.
 # Cannot set MemoryDenyWriteExecute=yes because this is a Go program compiled with -pie option, which would prevent the process from starting.
-BusName=org.deepin.dde.Lastore1.Smartmirror
+BusName=org.lingmo.Lastore1.Smartmirror
 CapabilityBoundingSet=
 ExecStart=/usr/libexec/lastore-daemon/lastore-smartmirror-daemon
 InaccessiblePaths=-/etc/shadow -/etc/pam.d/ -/etc/NetworkManager/system-connections/ -/etc/security/ -/etc/selinux/ -/etc/deepin-elf-verify/ -/etc/filearmor.d/ -/etc/crypttab -/etc/fstab -/sysroot/ostree/repo/ -/persistent/ostree/repo/

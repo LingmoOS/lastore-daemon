@@ -19,12 +19,12 @@ import (
 	"time"
 
 	"github.com/godbus/dbus/v5"
-	"github.com/linuxdeepin/go-lib/gettext"
-	"github.com/linuxdeepin/go-lib/utils"
-	"github.com/linuxdeepin/lastore-daemon/src/internal/system"
-	"github.com/linuxdeepin/lastore-daemon/src/internal/system/apt"
-	"github.com/linuxdeepin/lastore-daemon/src/internal/system/dut"
-	"github.com/linuxdeepin/lastore-daemon/src/internal/updateplatform"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/gettext"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/utils"
+	"github.com/LingmoOS/lastore-daemon/src/internal/system"
+	"github.com/LingmoOS/lastore-daemon/src/internal/system/apt"
+	"github.com/LingmoOS/lastore-daemon/src/internal/system/dut"
+	"github.com/LingmoOS/lastore-daemon/src/internal/updateplatform"
 	debVersion "pault.ag/go/debian/version"
 )
 

@@ -10,7 +10,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/linuxdeepin/lastore-daemon/src/internal/mirrors"
+	"github.com/LingmoOS/lastore-daemon/src/internal/mirrors"
 
 	"github.com/codegangsta/cli"
 )

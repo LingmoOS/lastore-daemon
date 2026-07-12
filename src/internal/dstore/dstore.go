@@ -10,7 +10,7 @@ import (
 	"time"
 
 	"github.com/go-ini/ini"
-	"github.com/linuxdeepin/go-lib/log"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/log"
 )
 
 var logger = log.NewLogger("lastore/dstore")

@@ -15,19 +15,19 @@ import (
 	"strings"
 	"time"
 
-	"github.com/linuxdeepin/lastore-daemon/src/internal/config"
-	"github.com/linuxdeepin/lastore-daemon/src/internal/system"
-	"github.com/linuxdeepin/lastore-daemon/src/internal/updateplatform"
+	"github.com/LingmoOS/lastore-daemon/src/internal/config"
+	"github.com/LingmoOS/lastore-daemon/src/internal/system"
+	"github.com/LingmoOS/lastore-daemon/src/internal/updateplatform"
 
 	"github.com/godbus/dbus/v5"
-	"github.com/linuxdeepin/go-lib/dbusutil"
-	"github.com/linuxdeepin/go-lib/keyfile"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/dbusutil"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/keyfile"
 )
 
 const (
 	lastoreUnitCache = "/tmp/lastoreUnitCache"
 	run              = "systemd-run"
-	lastoreDBusCmd   = "dbus-send --system --print-reply --dest=org.deepin.dde.Lastore1 /org/deepin/dde/Lastore1 org.deepin.dde.Lastore1.Manager.HandleSystemEvent"
+	lastoreDBusCmd   = "dbus-send --system --print-reply --dest=org.lingmo.Lastore1 /org/lingmo/Lastore1 org.lingmo.Lastore1.Manager.HandleSystemEvent"
 	deepinDaemonUser = "deepin-daemon"
 )
 
@@ -69,7 +69,7 @@ type lastoreUnitMap map[UnitName][]string
 // 定时任务和文件监听map
 func (m *Manager) getLastoreSystemUnitMap() lastoreUnitMap {
 	handleEventCmdArgs := []string{
-		"/usr/bin/dbus-send", "--system", "--print-reply", "--dest=org.deepin.dde.Lastore1", "/org/deepin/dde/Lastore1", "org.deepin.dde.Lastore1.Manager.HandleSystemEvent",
+		"/usr/bin/dbus-send", "--system", "--print-reply", "--dest=org.lingmo.Lastore1", "/org/lingmo/Lastore1", "org.lingmo.Lastore1.Manager.HandleSystemEvent",
 	}
 	genHandleEventCmdArgs := func(prop []string, eventKey systemdEventType) []string {
 		return append(append(prop, handleEventCmdArgs...), fmt.Sprintf("string:%s", eventKey))

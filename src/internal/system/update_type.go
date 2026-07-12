@@ -12,8 +12,8 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/linuxdeepin/go-lib/strv"
-	"github.com/linuxdeepin/go-lib/utils"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/strv"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/utils"
 )
 
 type UpdateType uint64

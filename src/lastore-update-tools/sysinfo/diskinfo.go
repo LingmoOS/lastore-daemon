@@ -10,8 +10,8 @@ import (
 	"strconv"
 	"strings"
 
-	runcmd "github.com/linuxdeepin/lastore-daemon/src/lastore-update-tools/pkg/utils/cmd"
-	"github.com/linuxdeepin/lastore-daemon/src/lastore-update-tools/pkg/utils/fs"
+	runcmd "github.com/LingmoOS/lastore-daemon/src/lastore-update-tools/pkg/utils/cmd"
+	"github.com/LingmoOS/lastore-daemon/src/lastore-update-tools/pkg/utils/fs"
 )
 
 // func GetRootDiskFreeSpace() (uint64, error) {   //和通过df计算的有偏差

@@ -6,7 +6,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/linuxdeepin/lastore-daemon/src/internal/utils"
+	"github.com/LingmoOS/lastore-daemon/src/internal/utils"
 	"os"
 
 	"github.com/codegangsta/cli"

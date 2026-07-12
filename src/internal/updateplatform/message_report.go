@@ -26,16 +26,16 @@ import (
 	"sync"
 	"time"
 
-	"github.com/linuxdeepin/lastore-daemon/src/lastore-update-tools/controller/check"
+	"github.com/LingmoOS/lastore-daemon/src/lastore-update-tools/controller/check"
 
 	"github.com/godbus/dbus/v5"
-	ConfigManager "github.com/linuxdeepin/go-dbus-factory/org.desktopspec.ConfigManager"
-	"github.com/linuxdeepin/go-lib/keyfile"
-	"github.com/linuxdeepin/go-lib/log"
-	"github.com/linuxdeepin/go-lib/strv"
-	"github.com/linuxdeepin/go-lib/utils"
-	. "github.com/linuxdeepin/lastore-daemon/src/internal/config"
-	"github.com/linuxdeepin/lastore-daemon/src/internal/system"
+	ConfigManager "github.com/LingmoOS/golang-github-lingmo-go-dbus-factory/org.desktopspec.ConfigManager"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/keyfile"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/log"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/strv"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/utils"
+	. "github.com/LingmoOS/lastore-daemon/src/internal/config"
+	"github.com/LingmoOS/lastore-daemon/src/internal/system"
 )
 
 var logger = log.NewLogger("lastore/messageReport")

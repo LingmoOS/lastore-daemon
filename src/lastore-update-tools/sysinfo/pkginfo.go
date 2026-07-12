@@ -8,10 +8,10 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/linuxdeepin/go-lib/log"
-	"github.com/linuxdeepin/lastore-daemon/src/lastore-update-tools/config/cache"
-	runcmd "github.com/linuxdeepin/lastore-daemon/src/lastore-update-tools/pkg/utils/cmd"
-	"github.com/linuxdeepin/lastore-daemon/src/lastore-update-tools/pkg/utils/fs"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/log"
+	"github.com/LingmoOS/lastore-daemon/src/lastore-update-tools/config/cache"
+	runcmd "github.com/LingmoOS/lastore-daemon/src/lastore-update-tools/pkg/utils/cmd"
+	"github.com/LingmoOS/lastore-daemon/src/lastore-update-tools/pkg/utils/fs"
 )
 
 var logger = log.NewLogger("lastore/update-tools/sysinfo")

@@ -15,10 +15,10 @@ import (
 	"strings"
 	"syscall"
 
-	license "github.com/linuxdeepin/go-dbus-factory/system/com.deepin.license"
-	"github.com/linuxdeepin/go-lib/dbusutil"
-	"github.com/linuxdeepin/go-lib/keyfile"
-	"github.com/linuxdeepin/go-lib/log"
+	license "github.com/LingmoOS/golang-github-lingmo-go-dbus-factory/system/com.lingmo.license"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/dbusutil"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/keyfile"
+	"github.com/LingmoOS/golang-github-lingmo-go-lib/log"
 )
 
 const (

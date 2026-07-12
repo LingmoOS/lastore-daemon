@@ -16,8 +16,8 @@ import (
 	"path"
 	"time"
 
-	. "github.com/linuxdeepin/lastore-daemon/src/internal/config"
-	"github.com/linuxdeepin/lastore-daemon/src/internal/updateplatform"
+	. "github.com/LingmoOS/lastore-daemon/src/internal/config"
+	"github.com/LingmoOS/lastore-daemon/src/internal/updateplatform"
 
 	"github.com/codegangsta/cli"
 	"github.com/godbus/dbus/v5"
