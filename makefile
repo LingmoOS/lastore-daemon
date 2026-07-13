@@ -1,6 +1,6 @@
 PBUILDER_PKG = pbuilder-satisfydepends-dummy
 
-GOPKG_PREFIX = github.com/linuxdeepin/lastore-daemon
+GOPKG_PREFIX = github.com/LingmoOS/lastore-daemon
 
 GOPATH_DIR = gopath
 
